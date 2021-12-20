@@ -2,7 +2,7 @@ import os
 import shutil
 import sys
 from types import coroutine
-src=r'C:\Users\e32lsm\F'    #src資料夾測試一下
+src=r'C:\Users\e32lsm\F'    #src資料夾
 dest=r'C:\Users\e32lsm\D'   #dest資料夾
 
 if not os.path.isdir(src):
