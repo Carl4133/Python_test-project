@@ -33,7 +33,7 @@ price = driver.find_elements_by_xpath("//div[contains(@class,'houseList-item-pri
 wb = xlwt.Workbook()
 ws = wb.add_sheet('591')
 
-for col in range(len(name)):
+for col in range(len(name)-1):    
     ws.write(col,0,name[col].text)
     ws.write(col,1,style[col].text)
     ws.write(col,2,price[col].text)

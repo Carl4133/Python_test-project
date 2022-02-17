@@ -1,6 +1,7 @@
 # 參閱7-28頁
 
 import gspread
+import time
 from oauth2client.service_account import ServiceAccountCredentials as sac
 from datetime import datetime
 
@@ -53,7 +54,7 @@ wks = sh.worksheet('591觀察房')
 # wks.update_cell(2, 5, 'swf.com.tw')
 wks.clear() #清掉舊的資料
 now=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-values = ['案件標題1', '總價', '區域', '大約地點', '更新時間123: '+now]
+values = ['案件標題', '總價', '區域', '大約地點', '更新時間: '+now]
 wks.insert_row(values, 1)
 # wks.resize(1)
 
@@ -61,10 +62,13 @@ wks.insert_row(values, 1)
 # wks.update_acell('A2',name[0].text)
 
 
-for col in range(len(name)):    
+for col in range(len(name)-1):    
     wks.update_cell(col+2,1,name[col].text)
     wks.update_cell(col+2,2,style[col].text)
     wks.update_cell(col+2,3,price[col].text)
     wks.update_cell(col+2,4,section[col].text)
     wks.update_cell(col+2,5,address[col].text)
 
+    if col%10==0 and col!=0:
+        time.sleep(60)
+    
